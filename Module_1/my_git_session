@@ -1,0 +1,978 @@
+Script started on 2024-09-06 14:24:32+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git config --list -- [Kshow-origin
+[?2004l[?1h=file:/home/ayanava/.gitconfig   user.name=ayanava-tiger[m
+file:/home/ayanava/.gitconfig   user.email=ayanava.mukhopad@tigeranalytics.com[m
+[K[?1l>[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git config --lit[Kst
+[?2004l[?1h=user.name=ayanava-tiger[m
+user.email=ayanava.mukhopad@tigeranalytics.com[m
+[K[?1l>[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git help config
+[?2004l[?1049h[22;0;0t[?1h=GIT-CONFIG(1)                                         Git Manual                                        GIT-CONFIG(1)[m
+[m
+[1mNAME[0m[m
+       git-config - Get and set repository or global options[m
+[m
+[1mSYNOPSIS[0m[m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--fixed-value] [--show-origin] [--show-scope] [-z|--null] name [value[m  [value-pattern]][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] --add name value[m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--fixed-value] --replace-all name value [value-pattern][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--show-origin] [--show-scope] [-z|--null] [--fixed-value] --get name [m [value-pattern][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--show-origin] [--show-scope] [-z|--null] [--fixed-value] --get-all n[m ame [value-pattern][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [--show-origin] [--show-scope] [-z|--null] [--fixed-value] [--name-onl[m y] --get-regexp name_regex [value-pattern][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--type=<type>] [-z|--null] --get-urlmatch name URL[m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--fixed-value] --unset name [value-pattern][m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--fixed-value] --unset-all name [value-pattern][m
+       [4mgit[24m [4mconfig[24m [<file-option>] --rename-section old_name new_name[m
+       [4mgit[24m [4mconfig[24m [<file-option>] --remove-section name[m
+       [4mgit[24m [4mconfig[24m [<file-option>] [--show-origin] [--show-scope] [-z|--null] [--name-only] -l | --list[m
+       [4mgit[24m [4mconfig[24m [<file-option>] --get-color name [default][m
+       [4mgit[24m [4mconfig[24m [<file-option>] --get-colorbool name [stdout-is-tty][m
+       [4mgit[24m [4mconfig[24m [<file-option>] -e | --edit[m
+[m
+[1mDESCRIPTION[0m[m
+       You can query/set/replace/unset options with this command. The name is actually the section and the key[m
+       separated by a dot, and the value will be escaped.[m
+[7m Manual page git-config(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page git-config(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HMGIT-CONFIG(1)                                         Git Manual                                        GIT-CONFIG(1)[m
+[30;1H[K[7m Manual page git-config(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page git-config(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Multiple lines can be added to an option by using the [1m--add[0m option. If you want to update or unset an option[m
+[7m Manual page git-config(1) line 3 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       which can occur on multiple lines, a [1mvalue-pattern[0m (which is an extended regular expression, unless the[m
+[7m Manual page git-config(1) line 4 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--fixed-value[0m option is given) needs to be given. Only the existing values that match the pattern are updated[m
+[7m Manual page git-config(1) line 5 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0t[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git config -h
+[?2004lusage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-pattern]
+    --get-all             get all values: key [value-pattern]
+    --get-regexp          get values for regexp: name-regex [value-pattern]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value-pattern]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-pattern]
+    --unset-all           remove all matches: name [value-pattern]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    --fixed-value         use string equality when comparing values to 'value-pattern'
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --bool-or-str         value is --bool or string
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --show-scope          show scope of config (worktree, local, global, system, command)
+    --default <value>     with --get, use default value when missing entry
+
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004lmy_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2024-09-06 15:35:21+05:30 [COMMAND_EXIT_CODE="0"]
+Script started on 2024-09-09 12:12:13+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ [7mgit config --list --show-origin[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit config --list --show-origin
+[?2004l[?1h=file:/home/ayanava/.gitconfig   user.name=ayanava-tiger[m
+file:/home/ayanava/.gitconfig   user.email=ayanava.mukhopad@tigeranalytics.com[m
+[K[?1l>[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git clone [7mhttps://github.com/ayanava-tiger/Git_Hanson[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chttps://github.com/ayanava-tiger/Git_Hanson
+[?2004lCloning into 'Git_Hanson'...
+Username for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/ayanava-tiger/Git_Hanson/'
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004lmy_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ lsgit clone https://github.com/ayanava-tiger/Git_Hanson
+[?2004lCloning into 'Git_Hanson'...
+Username for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/ayanava-tiger/Git_Hanson/'
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git clone https://github.com/ayanava-tiger/Git_Hanson
+[?2004lCloning into 'Git_Hanson'...
+Username for 'https://github.com': ayanva  ava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/ayanava-tiger/Git_Hanson/'
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git clone https://github.com/ayanava-tiger/Git_Hanson
+[?2004lCloning into 'Git_Hanson'...
+Username for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+remote: Write access to repository not granted.
+fatal: unable to access 'https://github.com/ayanava-tiger/Git_Hanson/': The requested URL returned error: 403
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004lmy_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ lsgit clone https://github.com/ayanava-tiger/Git_Hanson
+[?2004lCloning into 'Git_Hanson'...
+Username for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+remote: Enumerating objects: 3, done.[K
+remote: Counting objects:  33% (1/3)[Kremote: Counting objects:  66% (2/3)[Kremote: Counting objects: 100% (3/3)[Kremote: Counting objects: 100% (3/3), done.[K
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)[K
+Receiving objects:  33% (1/3)Receiving objects:  66% (2/3)Receiving objects: 100% (3/3)Receiving objects: 100% (3/3), done.
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mGit_Hanson[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git clone [7mhttps://github.com/ayanava-tiger/TAMLEP-Ayanava[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chttps://github.com/ayanava-tiger/TAMLEP-Ayanava
+[?2004lCloning into 'TAMLEP-Ayanava'...
+warning: You appear to have cloned an empty repository.
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git l[Kclone [7mhttps://github.com/ayanava-tiger/Tamlep-Ayanava[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chttps://github.com/ayanava-tiger/Tamlep-Ayanava
+[?2004lCloning into 'Tamlep-Ayanava'...
+remote: Enumerating objects: 3, done.[K
+remote: Counting objects:  33% (1/3)[Kremote: Counting objects:  66% (2/3)[Kremote: Counting objects: 100% (3/3)[Kremote: Counting objects: 100% (3/3), done.[K
+remote: Compressing objects:  50% (1/2)[Kremote: Compressing objects: 100% (2/2)[Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)[K
+Receiving objects:  33% (1/3)Receiving objects:  66% (2/3)Receiving objects: 100% (3/3)Receiving objects: 100% (3/3), done.
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTAMLEP-Ayanava[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd[K[Kcd Tamlep-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ k[Kls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTAMLEP-Ayanava[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Tamlep-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ mkdir Assign[K[K[K[K[K[KModule 1[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd[K[Kgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd TAMLEP-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ git status
+[?2004lOn branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ rmdir Tamlep_[K[K[K[K[K[KAMLEP-Ayanava
+[?2004lrmdir: failed to remove 'TAMLEP-Ayanava': Directory not empty
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Ta[KAMLEP-AYANAVA[K[K[K[K[K[Kyanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ ls
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ ls
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd TAMLEP-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd gi[K[KGit_hanson[K[K[K[K[K[KHanson
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ echo
+[?2004l
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ceh[K[K[Kecho Git_Hanson>README
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mREADME[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME  README.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ rm READMR[KE
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status'[K
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git [K[K[K[Kecho Gir[Kt_Hanson.[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kecho Git_Hanson>H[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[KVim[K[K[Kvim Rea[K[K[KREADME.md
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H"README.md" [noeol] 1L, 12B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,1[11CAll[1;1H[?25h[?12$p[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;2H[30;105H2[1;2H[?25h[?25l[30;93H~@k[1;2H[30;93H   [1;3H[30;105H3[1;3H[?25h[?25l[30;93H~@k[1;3H[30;93H   [1;4H[30;105H4[1;4H[?25h[?25l[30;93H~@k[1;4H[30;93H   [1;5H[30;105H5[1;5H[?25h[?25l[30;93H~@k[1;5H[30;93H   [1;6H[30;105H6[1;6H[?25h[?25l[30;93H~@k[1;6H[30;93H   [1;7H[30;105H7[1;7H[?25h[?25l[30;93H~@k[1;7H[30;93H   [1;8H[30;105H8[1;8H[?25h[?25l[30;93H~@k[1;8H[30;93H   [1;9H[30;105H9[1;9H[?25h[?25l[30;93H~@k[1;9H[30;93H   [1;10H[30;105H10[1;10H[?25h[?25l[30;93H~@k[1;10H[30;93H   [1;11H[30;106H1[1;11H[?25h[?25l[30;93H~@k[1;11H[30;93H   [1;12H[30;106H2[1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H~@k[1;12H[30;93H   [1;12H[?25h[?25l[30;93H<20>[1;12H[30;93H    [1;12H[?25h[?25l[30;93Ha[1;12H[30;93H [1;13H[30;1H[1m-- INSERT --[m[30;13H[K[30;103H1,13[10CAll[1;13H[?25h[?25l[35mf[m[30;106H4[1;14H[?25h[?25l[1;13H[K[30;106H3[1;13H[?25h[?25l[35m [m[30;106H4[1;14H[?25h[?25l[1;13H[K[30;106H3[1;13H[?25h[30;1H[K[1;12H[?25l[30;93H^[[1;12H[30;93H  [1;13H[30;103H1,12[10CAll[1;12H[?25h[?25l[30;93H^[[1;12H[30;93H  [1;12H[30;93H^[[1;12H[30;93H  [1;12H[?25h[?25l[30;93H^[[1;12H[30;93H  [1;12H[30;93H^[[1;12H[30;93H  [1;12H[?25h[?25l[30;93H^[[1;12H[30;93H  [1;12H[30;93H^[[1;12H[30;93H  [1;12H[?25h[?25l[30;93H^[[1;12H[30;93H  [1;12H[30;93H^[[1;12H[30;93H  [1;12H[?25h[?25l[30;93H^Z[1;12H[30;1H
+[?1004l[?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t
+[1]+  Stopped                 vim README.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.README.md.swp[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ vim REAM[KDME.md
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H[97m[41mE325: ATTENTION[m
+Found a swap file by the name ".README.md.swp"
+[10Cowned by: ayanava   dated: Mon Sep 09 13:13:34 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15116 (STILL RUNNING)
+While opening file "README.md"
+[13Cdated: Mon Sep 09 12:49:09 2024
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r README.md"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".README.md.swp"
+    to avoid this message.
+
+[32mSwap file ".README.md.swp" already exists![m
+[32m[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort: [?25h[m[30;1H[K[30;1H[?2004l[>4;m[23;2t[23;1t
+[?1004l[?2004l[?1l>[>4;m[?1049l[23;0;0t[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ vim README.md\[K
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H[97m[41mE325: ATTENTION[m
+Found a swap file by the name ".README.md.swp"
+[10Cowned by: ayanava   dated: Mon Sep 09 13:13:34 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15116 (STILL RUNNING)
+While opening file "README.md"
+[13Cdated: Mon Sep 09 12:49:09 2024
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r README.md"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".README.md.swp"
+    to avoid this message.
+
+[32mSwap file ".README.md.swp" already exists![m
+[32m[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort: [?25h[m[30;1H[K[?25l[30;1H"README.md" [readonly][noeol] 1L, 12B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,1[11CAll[1;1H[?25h[?12$p[?25l[30;93Hj[1;1H[30;93H [1;1H[?25h[?25l[30;93Hh[1;1H[30;93H [1;1H[?25h[?25l[30;93Hf[1;1H[?25h[?25l[30;94H~@k[1;1H[30;93H    [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H^Z[1;1H[30;1H
+[?1004l[?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t
+[2]+  Stopped                 vim README.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ vim README.md
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H[97m[41mE325: ATTENTION[m
+Found a swap file by the name ".README.md.swp"
+[10Cowned by: ayanava   dated: Mon Sep 09 13:13:34 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15116 (STILL RUNNING)
+While opening file "README.md"
+[13Cdated: Mon Sep 09 12:49:09 2024
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r README.md"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".README.md.swp"
+    to avoid this message.
+
+[32mSwap file ".README.md.swp" already exists![m
+[32m[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort: [?25h[m[30;1H[K[?25l[30;1H"README.md" [noeol] 1L, 12B
+Swap files found:
+   Using specified name:
+1.    .README.md.swo
+[10Cowned by: ayanava   dated: Mon Sep 09 13:14:53 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: no
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15440 (STILL RUNNING)
+2.    .README.md.swp
+[10Cowned by: ayanava   dated: Mon Sep 09 13:13:34 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15116 (STILL RUNNING)
+   In directory ~/tmp:
+      -- none --
+   In directory /var/tmp:
+      -- none --
+   In directory /tmp:
+      -- none --
+
+Enter number of swap file to use (0 to quit): [?25h2
+[?25lUsing swap file ".README.md.swp"
+Original file "~/Git_Hanson/README.md"
+[97m[41mE309: Unable to read block 1 from .README.md.swp[m
+[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[30;1H[32mPress ENTER or type command to continue[?25h[?12$p[27m[23m[29m[m[H[2J[?25l[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+
+[94m~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,1[11CAll[1;1H[?25h[?25l[30;93Hi[1;1H[30;93H [1;1H[30;1H[1m-- INSERT --[m[30;103H[K[30;103H1,1[11CAll[1;1H[?25h[?25li# Git[97m[101m_[mHanson[30;105H2[1;2H[?25h[?25li# Git[97m[101m_[mHanson[30;105H3[1;3H[?25h[?25l# Git[97m[101m_[mHanson[1;14H[K[30;105H2[1;2H[?25h[?25l[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m[1;13H[K[30;105H1[1;1H[?25h[?25l[30;105H2[1;2H[?25h[?25l[30;105H3[1;3H[?25h[?25l[30;105H4[1;4H[?25h[?25l[30;105H5[1;5H[?25h[?25l[30;105H6[1;6H[?25h[?25l[30;105H7[1;7H[?25h[?25l[30;105H8[1;8H[?25h[?25l[30;105H9[1;9H[?25h[?25l[30;105H10[1;10H[?25h[?25l[30;106H1[1;11H[?25h[?25l[30;106H2[1;12H[?25h[?25l[30;106H3[1;13H[?25h[?25l[35m.[m[30;106H4[1;14H[?25h[?25l[35m [m[30;106H5[1;15H[?25h[?25l[35m T[m[30;106H6[1;16H[?25h[?25l[35mh[m[30;106H7[1;17H[?25h[?25l[35mi[m[30;106H8[1;18H[?25h[?25l[35ms[m[30;106H9[1;19H[?25h[?25l[35m [m[30;105H20[1;20H[?25h[?25l[35m i[m[30;106H1[1;21H[?25h[?25l[35ms[m[30;106H2[1;22H[?25h[?25l[35m [m[30;106H3[1;23H[?25h[?25l[35m t[m[30;106H4[1;24H[?25h[?25l[35mh[m[30;106H5[1;25H[?25h[?25l[35me[m[30;106H6[1;26H[?25h[?25l[35m [m[30;106H7[1;27H[?25h[?25l[35m r[m[30;106H8[1;28H[?25h[?25l[35me[m[30;106H9[1;29H[?25h[?25l[35mp[m[30;105H30[1;30H[?25h[?25l[35mo[m[30;106H1[1;31H[?25h[?25l[35ms[m[30;106H2[1;32H[?25h[?25l[35mi[m[30;106H3[1;33H[?25h[?25l[35mt[m[30;106H4[1;34H[?25h[?25l[35mo[m[30;106H5[1;35H[?25h[?25l[35mr[m[30;106H6[1;36H[?25h[?25l[35my[m[30;106H7[1;37H[?25h[?25l[35m [m[30;106H8[1;38H[?25h[?25l[35m w[m[30;106H9[1;39H[?25h[?25l[35mh[m[30;105H40[1;40H[?25h[?25l[35me[m[30;106H1[1;41H[?25h[?25l[35mr[m[30;106H2[1;42H[?25h[?25l[35me[m[30;106H3[1;43H[?25h[?25l[35m [m[30;106H4[1;44H[?25h[?25l[35m t[m[30;106H5[1;45H[?25h[?25l[35mh[m[30;106H6[1;46H[?25h[?25l[35me[m[30;106H7[1;47H[?25h[?25l[35m [m[30;106H8[1;48H[?25h[?25l[35m h[m[30;106H9[1;49H[?25h[?25l[35ma[m[30;105H50[1;50H[?25h[?25l[35mn[m[30;106H1[1;51H[?25h[?25l[35ms[m[30;106H2[1;52H[?25h[?25l[1;51H[K[30;106H1[1;51H[?25h[?25l[35md[m[30;106H2[1;52H[?25h[?25l[35ms[m[30;106H3[1;53H[?25h[?25l[35m [m[30;106H4[1;54H[?25h[?25l[35m o[m[30;106H5[1;55H[?25h[?25l[35mn[m[30;106H6[1;56H[?25h[?25l[35m [m[30;106H7[1;57H[?25h[?25l[35m e[m[30;106H8[1;58H[?25h[?25l[35mx[m[30;106H9[1;59H[?25h[?25l[35me[m[30;105H60[1;60H[?25h[?25l[35mr[m[30;106H1[1;61H[?25h[?25l[35mc[m[30;106H2[1;62H[?25h[?25l[35mi[m[30;106H3[1;63H[?25h[?25l[35ms[m[30;106H4[1;64H[?25h[?25l[35me[m[30;106H5[1;65H[?25h[?25l[35ms[m[30;106H6[1;66H[?25h[?25l[35m [m[30;106H7[1;67H[?25h[?25l[35m a[m[30;106H8[1;68H[?25h[?25l[35mr[m[30;106H9[1;69H[?25h[?25l[35me[m[30;105H70[1;70H[?25h[?25l[35m [m[30;106H1[1;71H[?25h[?25l[35m d[m[30;106H2[1;72H[?25h[?25l[35mo[m[30;106H3[1;73H[?25h[?25l[35mn[m[30;106H4[1;74H[?25h[?25l[35me[m[30;106H5[1;75H[?25h[?25l[35m.[m[30;106H6[1;76H[?25h[?25l[2;29r[2;1H[L[1;30r[30;103H[K[30;103H2,1[11CAll[2;1H[?25h[?25l[1;29r[29;1H
+[1;30r[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson. This is the repository where the hands on exercises are done.[m[29;1H[94m~                                                                                                                       [m[30;103H[K[30;103H1,76[10CAll[1;76H[?25h[?25l[34m^Z[m[30;106H7-78[1;78H[?25h[?25l[1;76H[K[30;106H6   [1;76H[?25h[30;1H[K[1;75H[?25l[30;93H^[[1;75H[30;93H  [1;76H[30;103H1,75[10CAll[1;75H[?25h[?25l[30;93H^Z[1;75H[30;1H
+[?1004l[?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t
+[3]+  Stopped                 vim README.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ vim README.mdls[Kgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.README.md.swn[m
+	[31m.README.md.swo[m
+	[31m.README.md.swp[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ vvim[K[K[Kim [K[K[K[Klsgit statusvim README.md
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H[97m[41mE325: ATTENTION[m
+Found a swap file by the name ".README.md.swp"
+[10Cowned by: ayanava   dated: Mon Sep 09 13:13:34 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15116 (STILL RUNNING)
+While opening file "README.md"
+[13Cdated: Mon Sep 09 12:49:09 2024
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r README.md"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".README.md.swp"
+    to avoid this message.
+
+[32mSwap file ".README.md.swp" already exists![m
+[32m[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort: [?25h[m[30;1H[K[?25l[30;1H"README.md" [readonly][noeol] 1L, 12B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,1[11CAll[1;1H[?25h[?12$p[?25l[30;93H^[[1;1H[30;93H  [1;1H[30;93H^[[1;1H[30;93H  [1;1H[?25h[?25l[30;93H^Z[1;1H[30;1H
+[?1004l[?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t
+[4]+  Stopped                 vim README.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ vi[K[Kvim README.md
+[?2004l[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;30r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[30;1H[97m[41mE325: ATTENTION[m
+Found a swap file by the name ".README.md.swp"
+[10Cowned by: ayanava   dated: Mon Sep 09 13:13:34 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15116 (STILL RUNNING)
+While opening file "README.md"
+[13Cdated: Mon Sep 09 12:49:09 2024
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r README.md"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".README.md.swp"
+    to avoid this message.
+
+[32mSwap file ".README.md.swp" already exists![m
+[32m[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort: [?25h[m[30;1H[K[?25l[30;1H"README.md" [noeol] 1L, 12B
+Swap files found:
+   Using specified name:
+1.    .README.md.swm
+[10Cowned by: ayanava   dated: Mon Sep 09 13:17:07 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: no
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15967 (STILL RUNNING)
+2.    .README.md.swn
+[10Cowned by: ayanava   dated: Mon Sep 09 13:16:19 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15505 (STILL RUNNING)
+3.    .README.md.swo
+[10Cowned by: ayanava   dated: Mon Sep 09 13:14:53 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: no
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15440 (STILL RUNNING)
+4.    .README.md.swp
+[10Cowned by: ayanava   dated: Mon Sep 09 13:13:34 2024
+[9Cfile name: ~ayanava/Git_Hanson/README.md
+[10Cmodified: YES
+[9Cuser name: ayanava   host name: TIGER01404
+[8Cprocess ID: 15116 (STILL RUNNING)
+   In directory ~/tmp:
+      -- none --
+[32m-- More --[?25h[m[30;1H[K[30;4HIn directory /var/tmp:
+[32m-- More --[m[30;1H[K[30;7H-- none --
+[32m-- More --[m[30;1H[K[30;4HIn directory /tmp:
+[32m-- More --[m[30;1H[K[30;7H-- none --
+[32m-- More --[m[30;1H[K[30;1H
+[32m-- More --[m[30;1H[K[30;1HEnter number of swap file to use (0 to quit): 1
+[32m-- More --[m[30;1H[K[?25l[30;1HUsing swap file ".README.md.swm"
+[32m-- More --[?25h[m[30;1H[K[?25l[30;1HOriginal file "~/Git_Hanson/README.md"
+[32m-- More --[?25h[m[30;1H[K[?25l[30;1HRecovery completed. Buffer contents equals file contents.
+[32m-- More --[?25h[m[30;1H[K[30;1HYou may want to delete the .swp file now.
+[32m-- More --[m[30;1H[K[30;1HNote: process STILL RUNNING: 15967
+[32m-- More --[m[30;1H[K[30;1H
+[32m-- More --[m[30;1H[K[30;1H
+[32m-- More --[m[30;1H[K[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[30;1H[32mPress ENTER or type command to continue[?12$p[m[1;1H[L[1;10Huser name: ayanava   host name: TIGER01404[30;1H[32m-- More --[m[1;1H[L[1;11Hmodified: YES[30;1H[32m-- More --[m[1;1H[L[1;10Hfile name: ~ayanava/Git_Hanson/README.md[30;1H[K[30;1H[32m-- More --[m[1;1H[L[1;11Howned by: ayanava   dated: Mon Sep 09 13:16:19 2024[30;1H[K[30;1H[32m-- More --[m[1;1H[L[1;1H2.    .README.md.swn[30;1H[K[30;1H[32m-- More --[m[1;1H[L[1;9Hprocess ID: 15967 (STILL RUNNING)[30;1H[K[30;1H[32m-- More --[m[1;1H[L[1;10Huser name: ayanava   host name: TIGER01404[30;1H[K[30;1H[32m-- More --[m[1;1H[L[1;11Hmodified: no[30;1H[K[30;1H[32m-- More --[m[1;1H[L[1;10Hfile name: ~ayanava/Git_Hanson/README.md[30;1H[32m-- More --[m[1;1H[L[1;11Howned by: ayanava   dated: Mon Sep 09 13:17:07 2024[30;7H[K[30;1H[32m-- More --[m[1;1H[L[1;1H1.    .README.md.swm[30;4H[K[30;1H[32m-- More --[m[1;1H[L[1;4HUsing specified name:[30;7H[K[30;1H[32m-- More --[m[1;1H[L[1;1HSwap files found:[30;4H[K[30;1H[32m-- More --[m[1;1H[L[1;1H[32m[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort: [m"README.md" [noeol] 1L, 12B[30;7H[K[30;1H[32m-- More --[m[1;1H[L[1;1H[32mSwap file ".README.md.swp" already exists![m[30;4H[K[30;1H[32m-- More --[m[1;1H[L[30;9H[K[30;1H[32m-- More --[m[1;1H[L[1;5Hto avoid this message.[30;10H[K[30;1H[32m-- More --[m
+[29;1H[K[29;9Hprocess ID: 15116 (STILL RUNNING)
+[32m-- More --[m
+[29;1H[K[29;4HIn directory ~/tmp:
+[32m-- More --[m
+[29;1H[K[29;7H-- none --
+[32m-- More --[m
+[29;1H[K[29;4HIn directory /var/tmp:
+[32m-- More --[m
+[29;1H[K[29;7H-- none --
+[32m-- More --[m
+[29;1H[K[29;4HIn directory /tmp:
+[32m-- More --[m
+[29;1H[K[29;7H-- none --
+[32m-- More --[m
+[29;1H[K[30;1H[32m-- More --[m
+[29;1H[K[29;1HEnter number of swap file to use (0 to quit): 1
+[32m-- More --[m
+[29;1H[K[29;1HUsing swap file ".README.md.swm"
+[32m-- More --[m
+[29;1H[K[29;1HOriginal file "~/Git_Hanson/README.md"
+[32m-- More --[m
+[29;1H[K[29;1HRecovery completed. Buffer contents equals file contents.
+[32m-- More --[m
+[29;1H[K[29;1HYou may want to delete the .swp file now.
+[32m-- More --[m
+[29;1H[K[29;1HNote: process STILL RUNNING: 15967
+[32m-- More --[m
+[29;1H[K[30;1H[32m-- More --[m
+[29;1H[K[30;1H[32m-- More --[m
+[29;1H[K[30;1H[32m-- More --[m[30;1H[K[30;1H[32mPress ENTER or type command to continue[27m[23m[29m[m[H[2J[?25l[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,1[11CAll[1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;1H[?25h[?25l[30;93H~@k[1;1H[30;93H   [1;2H[30;105H2[1;2H[?25h[?25l[30;93H~@k[1;2H[30;93H   [1;3H[30;105H3[1;3H[?25h[?25l[30;93H~@k[1;3H[30;93H   [1;4H[30;105H4[1;4H[?25h[?25l[30;93H^[[1;4H[30;93H  [1;4H[30;93H^[[1;4H[30;93H  [1;4H[?25h[?25l[30;93H^Z[1;4H[30;1H
+[?1004l[?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t
+[5]+  Stopped                 vim README.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ vim README.md[Kvim README.mdls[Kgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.README.md.swl[m
+	[31m.README.md.swm[m
+	[31m.README.md.swn[m
+	[31m.README.md.swo[m
+	[31m.README.md.swp[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add README,[K.md
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add README.md[7Pstatus
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.README.md.swl[m
+	[31m.README.md.swm[m
+	[31m.README.md.swn[m
+	[31m.README.md.swo[m
+	[31m.README.md.swp[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add RED[KADME.md.swl
+[?2004lfatal: pathspec 'README.md.swl' did not match any files
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add README.md.swl.README.md.swl
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add .README.md.swl[1PREADME.md.swl[11Pstatus
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   .README.md.swl[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.README.md.swm[m
+	[31m.README.md.swn[m
+	[31m.README.md.swo[m
+	[31m.README.md.swp[m
+
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ rm .README.md.swn
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ rm .README.md.swn[Km
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ rm .README.md.swm[Ko
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ rm .README.md.swo[Kp
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ rm .README.md.swpomn[7Pgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   .README.md.swl[m
+
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git sho [K[K[K[K[K[K[K[Kgit status -s
+[?2004l[32mA[m  .README.md.swl
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ cd new.ts[Kxt
+[?2004lbash: cd: new.txt: No such file or directory
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ r[Kgit diff
+[?2004l[?1h=[K[?1l>[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git diff --staged
+[?2004l[?1h=[1mdiff --git a/.README.md.swl b/.README.md.swl[m[m
+[1mnew file mode 100644[m[m
+[1mindex 0000000..57ef909[m[m
+Binary files /dev/null and b/.README.md.swl differ[m
+[K[?1l>[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git commit
+[?2004lhint: Waiting for your editor to close the file... [?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;52H(B[0;7m[ Read 10 lines ](B[m[H(B[0;7m  GNU nano 6.2                          /home/ayanava/Git_Hanson/.git/COMMIT_EDITMSG                                    [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[3d[36m# Please enter the commit message for your changes. Lines starting[4d# with '#' will be ignored, and an empty message aborts the commit.[5d#[6d# On branch main[7d# Your branch is up to date with 'origin/main'.[8d#[9d# Changes to be committed:[10d#[38;5;208m       [36mnew file:   .README.md.swl[11d#[2d[39m(B[m[?12l[?25h[?25l[1;86H(B[0;7m*[119G(B[m[?12l[?25h[2dT[?25l[?12l[?25hh[?25l[?12l[?25hi[?25l[?12l[?25hs[?25l[?12l[?25h [?25l[?12l[?25hi[?25l[?12l[?25hs[?25l[?12l[?25h [?25l[?12l[?25ht[?25l[?12l[?25hh[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25hf[?25l[?12l[?25hi[?25l[?12l[?25hr[?25l[?12l[?25hs[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25hc[?25l[28d[K[?12l[?25h[2;20Ho[?25l[?12l[?25hm[?25l[?12l[?25hm[?25l[?12l[?25hi[?25l[?12l[?25ht[?25l[?12l[?25h.[?25l7[3;28r8[3dM[1;30r[3;1H[?12l[?25h[?25l[3;28r[28;1H
+[1;30r[2;26H[?12l[?25h[?25l[28d(B[0;7mSave modified buffer?                                                                                                   [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: /home/ayanava/Git_Hanson/.git/COMMIT_EDITMSG(B[m[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;86H(B[0;7m [119G(B[m[28;52H(B[0;7m[ Wrote 10 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[K[main 1d69fe6] This is the first commit.
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 .README.md.swl
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ G[Kgit status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git rm[K[K[K[K[K[Kls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTAMLEP-Ayanava[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git rm Ta[KAMLEP-Ayaa[Knava
+[?2004lfatal: not a git repository (or any of the parent directories): .git
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Tamlep-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ ls
+[?2004lREADME.md
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ s[Kgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ cd [K[K[Kcd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ec[Kxit
+[?2004lexit
+There are stopped jobs.
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ [?2004l
+exit
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[?12h[?12l[27m[23m[29m[m[H[2J[?25l[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,1[11CAll[1;1H[?25h[?12h[?12l[27m[23m[29m[m[H[2J[?25l[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,1[11CAll[1;1H[?25h[?25l[?25h[30;1H[?1004l[?2004l[?1l>[>4;m[?1049l[23;0;0tVim: Caught deadly signal TERM
+[?12h[?12l[27m[23m[29m[m[H[2J[?25l[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [?25l[?25h[30;1H[?1004l[?2004l[?1l>[>4;m[?1049l[23;0;0tVim: Caught deadly signal TERM
+[17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,12[10CAll[1;12H[?25h[?25l[?25h[30;1H[?1004l[?2004l[?1l>[>4;m[?1049l[23;0;0tVim: Caught deadly signal TERM
+Vim: preserving files...
+[?12h[?12l[27m[23m[29m[m[H[2J[?25l[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson[m
+[94m~                                                                                                                       [3;1H~                                                                                                                       [4;1H~                                                                                                                       [5;1H~                                                                                                                       [6;1H~                                                                                                                       [7;1H~                                                                                                                       [8;1H~                                                                                                                       [9;1H~                                                                                                                       [10;1H~                                                                                                                       [11;1H~                                                                                                                       [12;1H~                                                                                                                       [13;1H~                                                                                                                       [14;1H~                                                                                                                       [15;1H~                                                                                                                       [16;1H~                                                                                                                       [17;1H~                                                                                                                       [18;1H~                                                                                                                       [19;1H~                                                                                                                       [20;1H~                                                                                                                       [21;1H~                                                                                                                       [22;1H~                                                                                                                       [23;1H~                                                                                                                       [24;1H~                                                                                                                       [25;1H~                                                                                                                       [26;1H~                                                                                                                       [27;1H~                                                                                                                       [28;1H~                                                                                                                       [29;1H~                                                                                                                       [m[30;103H1,4[11CAll[1;4H[?25h[?25l[?25h[30;1H[?1004l[?2004l[?1l>[>4;m[?1049l[23;0;0tVim: Caught deadly signal TERM
+[?12h[?12l[27m[23m[29m[m[H[2J[?25l[1;1H[35m#[m[35m Git[m[97m[101m_[m[35mHanson. This is the repository where the hands on exercises are done.[m
+
+[94m~                                                                                                                       [4;1H~                                                                Script started on 2024-09-10 12:52:19+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ exitcd ..git statusls[Kcd Tamlep-Ayanavagit rm TAMLEP-Ayanavals[Kgit rm TAMLEP-Ayanava[4Pcd Tamlep-Ayanavals[Kgit status[5Pcd ..[1Pexit[Kgit log
+[?2004lfatal: not a git repository (or any of the parent directories): .git
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Ta[K[KGit_Hanson
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git log
+[?2004l[?1h=[33mcommit 1d69fe648d2eadd792a50bc89bbea6f8cd900c31[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m[m
+Author: ayanava-tiger <ayanava.mukhopad@tigeranalytics.com>[m
+Date:   Mon Sep 9 13:45:35 2024 +0530[m
+[m
+    This is the first commit.[m
+[m
+[33mcommit 4e075c09793a8a23466c3e8b6c55539aed3aa83e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m[m
+Author: ayanava-tiger <ayanava.mukhopad@tigeranalytics.com>[m
+Date:   Mon Sep 9 12:35:07 2024 +0530[m
+[m
+    Initial commit[m
+[K[?1l>[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git log --stat
+[?2004l[?1h=[33mcommit 1d69fe648d2eadd792a50bc89bbea6f8cd900c31[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m[m
+Author: ayanava-tiger <ayanava.mukhopad@tigeranalytics.com>[m
+Date:   Mon Sep 9 13:45:35 2024 +0530[m
+[m
+    This is the first commit.[m
+[m
+ .README.md.swl | Bin [31m0[m -> [32m12288[m bytes[m
+ 1 file changed, 0 insertions(+), 0 deletions(-)[m
+[m
+[33mcommit 4e075c09793a8a23466c3e8b6c55539aed3aa83e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m[m
+Author: ayanava-tiger <ayanava.mukhopad@tigeranalytics.com>[m
+Date:   Mon Sep 9 12:35:07 2024 +0530[m
+[m
+    Initial commit[m
+[m
+ README.md | 1 [32m+[m[m
+ 1 file changed, 1 insertion(+)[m
+[K[?1l>[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git remote
+[?2004lorigin
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git remov[Kte -v
+[?2004lorigin	https://github.com/ayanava-tiger/Git_Hanson (fetch)
+origin	https://github.com/ayanava-tiger/Git_Hanson (push)
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git g[Kfetch origib
+[?2004lfatal: 'origib' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git fetch origin
+[?2004lUsername for 'https://github.com': Ayanava-tiger
+Password for 'https://Ayanava-tiger@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/ayanava-tiger/Git_Hanson/'
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git fetch origin
+[?2004lUsername for 'https://github.com': ayaba  nava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git push origin master
+[?2004lerror: src refspec master does not match any
+[31merror: failed to push some refs to 'https://github.com/ayanava-tiger/Git_Hanson'
+[m[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    .README.md.swl[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add *
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mdeleted:    .README.md.swl[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git commit -a
+[?2004lhint: Waiting for your editor to close the file... [?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;52H(B[0;7m[ Read 11 lines ](B[m[H(B[0;7m  GNU nano 6.2                          /home/ayanava/Git_Hanson/.git/COMMIT_EDITMSG                                    [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[3d[36m# Please enter the commit message for your changes. Lines starting[4d# with '#' will be ignored, and an empty message aborts the commit.[5d#[6d# On branch main[7d# Your branch is ahead of 'origin/main' by 1 commit.[8d#   (use "git push" to publish your local commits)[9d#[10d# Changes to be committed:[11d#[38;5;208m       [36mdeleted:    .README.md.swl[12d#[2d[39m(B[m[?12l[?25h[?25l[1;86H(B[0;7m*[119G(B[m[?12l[?25h[2dC[?25l[?12l[?25ho[?25l[?12l[?25h [?25l[?12l[?25h[K[?25l[?12l[?25hC[?25l[?12l[?25ho[?25l[?12l[?25hm[?25l[?12l[?25hm[?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25ht[?25l[?12l[?25hw[?25l[?12l[?25ho[?25l[?12l[?25h [?25l[28d[K[?12l[?25h[2;12Hf[?25l[?12l[?25ho[?25l[?12l[?25hr[?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l7[3;28r8[3dM[1;30r[3;1H[?12l[?25h[?25l[3;28r[28;1H
+[1;30r[2;11H[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K[?25l[?12l[?25h[?25l[?12l[?25hS[?25l[?12l[?25he[?25l[?12l[?25hc[?25l[?12l[?25ho[?25l[?12l[?25hm[?25l[?12l[?25hd[?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25hc[?25l[?12l[?25ho[?25l[?12l[?25hm[?25l[?12l[?25hm[?25l[?12l[?25hi[?25l[?12l[?25ht[?25l[28d(B[0;7mSave modified buffer?                                                                                                   [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: /home/ayanava/Git_Hanson/.git/COMMIT_EDITMSG(B[m[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;86H(B[0;7m [119G(B[m[28;52H(B[0;7m[ Wrote 11 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[K[main 850d646] Secomd commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 .README.md.swl
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git push
+[?2004lUsername for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects: 100% (4/4)Writing objects: 100% (4/4), 655 bytes | 327.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ayanava-tiger/Git_Hanson
+   4e075c0..850d646  main -> main
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git stt[Katus
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git tag
+[?2004l[?1h=[K[?1l>[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ echo -e 'This is a text file \n ths[K[K[Kto ad[K[Kadd as an exercise.'>>exercise.txt
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ ls
+[?2004lREADME.md  exercise.txt
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add exerci[K[K[K[K[K[K[K[K[K[Kstu[Katus
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mexercise.txt[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git add exercise.txt
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git [K[K[K[Kgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   exercise.txt[m
+
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ f[Kgit commit
+[?2004lhint: Waiting for your editor to close the file... [?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;52H(B[0;7m[ Read 10 lines ](B[m[H(B[0;7m  GNU nano 6.2                          /home/ayanava/Git_Hanson/.git/COMMIT_EDITMSG                                    [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[3d[36m# Please enter the commit message for your changes. Lines starting[4d# with '#' will be ignored, and an empty message aborts the commit.[5d#[6d# On branch main[7d# Your branch is up to date with 'origin/main'.[8d#[9d# Changes to be committed:[10d#[38;5;208m       [36mnew file:   exercise.txt[11d#[2d[39m(B[m[?12l[?25h[?25l[1;86H(B[0;7m*[119G(B[m[?12l[?25h[2dA[?25l[?12l[?25hd[?25l[?12l[?25hd[?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25hg[?25l[?12l[?25h [?25l[?12l[?25he[?25l[?12l[?25hc[?25l[?12l[?25h [?25l[?12l[?25hx[?25l[?12l[?25he[?25l[?12l[?25hr[?25l[?12l[?25hc[?25l[?12l[?25hi[?25l[?12l[?25hs[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25hf[?25l[28d[K[?12l[?25h[2;18Hi[?25l[?12l[?25hl[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25ht[?25l[?12l[?25he[?25l[?12l[?25hx[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25hf[?25l[?12l[?25hi[?25l[?12l[?25hl[?25l[?12l[?25he[?25l[?12l[?25h,[?25l[?12l[?25h [?25l[?12l[?25hc[?25l[?12l[?25ho[?25l[?12l[?25hm[?25l[?12l[?25hm[?25l[?12l[?25hi[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25h3[?25l[28d(B[0;7mSave modified buffer?                                                                                                   [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: /home/ayanava/Git_Hanson/.git/COMMIT_EDITMSG(B[m[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;86H(B[0;7m [119G(B[m[28;52H(B[0;7m[ Wrote 10 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[K[main c04aace] Adding exercise text file, commit 3
+ 1 file changed, 2 insertions(+)
+ create mode 100644 exercise.txt
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ git push
+[?2004lUsername for 'https://github.com': ayanava-tie ger
+Password for 'https://ayanava-tiger@github.com': 
+Enumerating objects: 4, done.
+Counting objects:  25% (1/4)Counting objects:  50% (2/4)Counting objects:  75% (3/4)Counting objects: 100% (4/4)Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects:  50% (1/2)Compressing objects: 100% (2/2)Compressing objects: 100% (2/2), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 350 bytes | 175.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ayanava-tiger/Git_Hanson
+   850d646..c04aace  main -> main
+[?2004h]0;ayanava@TIGER01404: ~/Git_Hanson[01;32mayanava@TIGER01404[00m:[01;34m~/Git_Hanson[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd [K[K[Kls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTAMLEP-Ayanava[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ rm TAMLEP-aYAN=[K[K[K[K[KAyanava
+[?2004lrm: cannot remove 'TAMLEP-Ayanava': Is a directory
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ rmdir TAMLEP-Ayanava
+[?2004lrmdir: failed to remove 'TAMLEP-Ayanava': Directory not empty
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd TAMLEP-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ ls
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ cd
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cdlscd TAMLEP-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ rm
+[?2004lrm: missing operand
+Try 'rm --help' for more information.
+[?2004h]0;ayanava@TIGER01404: ~/TAMLEP-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/TAMLEP-Ayanava[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ rm -r TAMLEP-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Tamlep-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ c[Kmkdir Assignment[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ mkdir Assign[K[K[K[K[K[KModel[K[Kule 1[K[K_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ mkdir Module_1[4Pgit status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ ls
+[?2004l[0m[01;34mModule_1[0m  README.md
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git add[K[K[K[K[K[K[Kcd Modi[Kule-1[K[K_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ cd
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ m[Kls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ mv my_unix_session Tamlep-Ayanava/Module_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTamlep-Ayanava[0m  my_git_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Tamlep-Ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mModule_1/[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git add *
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git status
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	[32mnew file:   Module_1/my_unix_session[m
+
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git commit
+[?2004lhint: Waiting for your editor to close the file... [?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;52H(B[0;7m[ Read 10 lines ](B[m[H(B[0;7m  GNU nano 6.2                        /home/ayanava/Tamlep-Ayanava/.git/COMMIT_EDITMSG                                  [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[3d[36m# Please enter the commit message for your changes. Lines starting[4d# with '#' will be ignored, and an empty message aborts the commit.[5d#[6d# On branch main[7d# Your branch is up to date with 'origin/main'.[8d#[9d# Changes to be committed:[10d#[38;5;208m       [36mnew file:   Module_1/my_unix_session[11d#[2d[39m(B[m[?12l[?25h[?25l[1;88H(B[0;7m*[119G(B[m[?12l[?25h[2dA[?25l[?12l[?25hs[?25l[?12l[?25hs[?25l[?12l[?25hi[?25l[?12l[?25hg[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K[?25l[?12l[?25hM[?25l[?12l[?25ho[?25l[?12l[?25hd[?25l[?12l[?25hu[?25l[?12l[?25hl[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25h1[?25l[?12l[?25h [?25l[28d[K[?12l[?25h[2;10Ha[?25l[?12l[?25hs[?25l[?12l[?25hs[?25l[?12l[?25hi[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hs[?25l[?12l[?25hi[?25l[?12l[?25hg[?25l[?12l[?25hn[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25hm[?25l[?12l[?25he[?25l[?12l[?25hn[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25h1[?25l[?12l[?25h,[?25l[?12l[?25h [?25l[?12l[?25h.[?25l[?12l[?25h1[?25l[28d(B[0;7mSave modified buffer?                                                                                                   [29;1H Y(B[m Yes[K[30d(B[0;7m N(B[m No  [30;16H (B[0;7m^C(B[m Cancel[K[28;23H[?12l[?25h[?25l[?12l[?25h[?25l[29d(B[0;7m^G(B[m Help[29;31H(B[0;7mM-D(B[m DOS Format[29;61H(B[0;7mM-A(B[m Append[29;91H(B[0;7mM-B(B[m Backup File[30d(B[0;7m^C(B[m Cancel[17G[14X[30;31H(B[0;7mM-M(B[m Mac Format[30;61H(B[0;7mM-P(B[m Prepend[30;91H(B[0;7m^T(B[m Browse[28d(B[0;7mFile Name to Write: /home/ayanava/Tamlep-Ayanava/.git/COMMIT_EDITMSG(B[m[?12l[?25h[?25l[28;53H[1K (B[0;7m[ Writing... ](B[m[K[1;88H(B[0;7m [119G(B[m[28;52H(B[0;7m[ Wrote 10 lines ](B[m[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[K[main 91a32f1] Module 1 assignment 1.1
+ 1 file changed, 468 insertions(+)
+ create mode 100644 Module_1/my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git[Kt status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git push
+[?2004lUsername for 'https://github.com': ayanava-tie ger
+Password for 'https://ayanava-tiger@github.com': 
+To https://github.com/ayanava-tiger/Tamlep-Ayanava
+ [31m! [rejected]       [m main -> main (fetch first)
+[31merror: failed to push some refs to 'https://github.com/ayanava-tiger/Tamlep-Ayanava'
+[m[33mhint: Updates were rejected because the remote contains work that you do[m
+[33mhint: not have locally. This is usually caused by another repository pushing[m
+[33mhint: to the same ref. You may want to first integrate the remote changes[m
+[33mhint: (e.g., 'git pull ...') before pushing again.[m
+[33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[m
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git push
+[?2004lUsername for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+To https://github.com/ayanava-tiger/Tamlep-Ayanava
+ [31m! [rejected]       [m main -> main (fetch first)
+[31merror: failed to push some refs to 'https://github.com/ayanava-tiger/Tamlep-Ayanava'
+[m[33mhint: Updates were rejected because the remote contains work that you do[m
+[33mhint: not have locally. This is usually caused by another repository pushing[m
+[33mhint: to the same ref. You may want to first integrate the remote changes[m
+[33mhint: (e.g., 'git pull ...') before pushing again.[m
+[33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[m
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git remov[Kte
+[?2004lorigin
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git push -- [Khelp
+[?2004l[?1049h[22;0;0t[?1h=GIT-PUSH(1)                                           Git Manual                                          GIT-PUSH(1)[m
+[m
+[1mNAME[0m[m
+       git-push - Update remote refs along with associated objects[m
+[m
+[1mSYNOPSIS[0m[m
+       [4mgit[24m [4mpush[24m [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run] [--receive-pack=<git-receive-pac[m k>][m
+                  [--repo=<repository>] [-f | --force] [-d | --delete] [--prune] [-v | --verbose][m
+                  [-u | --set-upstream] [-o <string> | --push-option=<string>][m
+                  [--[no-]signed|--signed=(true|false|if-asked)][m
+                  [--force-with-lease[=<refname>[:<expect>]] [--force-if-includes]][m
+                  [--no-verify] [<repository> [<refspec>...]][m
+[m
+[1mDESCRIPTION[0m[m
+       Updates remote refs using local refs, while sending objects necessary to complete the given refs.[m
+[m
+       You can make interesting things happen to a repository every time you push into it, by setting up [4mhooks[24m there.[m
+       See documentation for [1mgit-receive-pack[0m(1).[m
+[m
+       When the command line does not specify where to push with the [1m<repository>[0m argument, [1mbranch.*.remote[0m[m
+       configuration for the current branch is consulted to determine where to push. If the configuration is missing,[m
+       it defaults to [4morigin[24m.[m
+[m
+       When the command line does not specify what to push with [1m<refspec>...[0m arguments or [1m--all[0m, [1m--mirror[0m, [1m--tags[0m[m
+       options, the command finds the default [1m<refspec>[0m by consulting [1mremote.*.push[0m configuration, and if it is not[m
+       found, honors [1mpush.default[0m configuration to decide what to push (See [1mgit-config[0m(1) for the meaning of[m
+       [1mpush.default[0m).[m
+[m
+[7m Manual page git-push(1) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0t[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ ls
+[?2004l[0m[01;34mModule_1[0m  README.md
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ cd Module_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git push
+[?2004lUsername for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+To https://github.com/ayanava-tiger/Tamlep-Ayanava
+ [31m! [rejected]       [m main -> main (fetch first)
+[31merror: failed to push some refs to 'https://github.com/ayanava-tiger/Tamlep-Ayanava'
+[m[33mhint: Updates were rejected because the remote contains work that you do[m
+[33mhint: not have locally. This is usually caused by another repository pushing[m
+[33mhint: to the same ref. You may want to first integrate the remote changes[m
+[33mhint: (e.g., 'git pull ...') before pushing again.[m
+[33mhint: See the 'Note about fast-forwards' in 'git push --help' for details.[m
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git pull
+[?2004lremote: Enumerating objects: 5, done.[K
+remote: Counting objects:  20% (1/5)[Kremote: Counting objects:  40% (2/5)[Kremote: Counting objects:  60% (3/5)[Kremote: Counting objects:  80% (4/5)[Kremote: Counting objects: 100% (5/5)[Kremote: Counting objects: 100% (5/5), done.[K
+remote: Compressing objects:  50% (1/2)[Kremote: Compressing objects: 100% (2/2)[Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)[K
+Unpacking objects:  33% (1/3)Unpacking objects:  66% (2/3)Unpacking objects: 100% (3/3)Unpacking objects: 100% (3/3), 921 bytes | 460.00 KiB/s, done.
+From https://github.com/ayanava-tiger/Tamlep-Ayanava
+   e816fdb..4140b84  main       -> origin/main
+[33mhint: You have divergent branches and need to specify how to reconcile them.[m
+[33mhint: You can do so by running one of the following commands sometime before[m
+[33mhint: your next pull:[m
+[33mhint: [m
+[33mhint:   git config pull.rebase false  # merge (the default strategy)[m
+[33mhint:   git config pull.rebase true   # rebase[m
+[33mhint:   git config pull.ff only       # fast-forward only[m
+[33mhint: [m
+[33mhint: You can replace "git config" with "git config --global" to set a default[m
+[33mhint: preference for all repositories. You can also pass --rebase, --no-rebase,[m
+[33mhint: or --ff-only on the command line to override the configured default per[m
+[33mhint: invocation.[m
+fatal: Need to specify how to reconcile divergent branches.
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git status
+[?2004lOn branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ cd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git pull
+[?2004l[33mhint: You have divergent branches and need to specify how to reconcile them.[m
+[33mhint: You can do so by running one of the following commands sometime before[m
+[33mhint: your next pull:[m
+[33mhint: [m
+[33mhint:   git config pull.rebase false  # merge (the default strategy)[m
+[33mhint:   git config pull.rebase true   # rebase[m
+[33mhint:   git config pull.ff only       # fast-forward only[m
+[33mhint: [m
+[33mhint: You can replace "git config" with "git config --global" to set a default[m
+[33mhint: preference for all repositories. You can also pass --rebase, --no-rebase,[m
+[33mhint: or --ff-only on the command line to override the configured default per[m
+[33mhint: invocation.[m
+fatal: Need to specify how to reconcile divergent branches.
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git config.rebase false[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd[K[Kls
+[?2004l[0m[01;34mModule_1[0m  README.md
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ cd Module_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ c[Kls
+[?2004lmy_unix_session
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ cp my_i[Kunix_session[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd ..[K[K[K
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTamlep-Ayanava[0m  my_git_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Git[K[K[K[K Tamlep-Ayanava.[K.[K/Modue[Kle_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ cp Mod[K[K[Kmy_unix_session /home
+[?2004lcp: cannot create regular file '/home/my_unix_session': Permission denied
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ cp my_unix_session /home/ayanava
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ cd
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ cd Tamlep-Ayanava/Module_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ i[Kgit config pull.rebase false
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git status
+[?2004lOn branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git push[K[K[Kull
+[?2004lhint: Waiting for your editor to close the file... [?2004h[?1049h[22;0;0t[1;30r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[28;54H(B[0;7m[ Reading... ](B[m[28;53H(B[0;7m[ Read 6 lines ](B[m[H(B[0;7m  GNU nano 6.2                           /home/ayanava/Tamlep-Ayanava/.git/MERGE_MSG                                    [1;119H(B[m[29d(B[0;7m^G(B[m Help[29;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[29;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark[30d(B[0;7m^X(B[m Exit[30;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[2dMerge branch 'main' of [94mhttps://github.com/ayanava-tiger/Tamlep-Ayanava[3d[36m# Please enter a commit message to explain why this merge is necessary,[4d# especially if it merges an updated upstream into a topic branch.[5d#[6d# Lines starting with '#' will be ignored, and an empty message aborts[7d# the commit.[2d[39m(B[m[?12l[?25h[?25l[?12l[?25hM[?25l[?12l[?25he[?25l[?12l[?25hr[?25l[?12l[?25hg[?25l[?12l[?25he[?25l[?12l[?25h [?25l[?12l[?25hb[?25l[?12l[?25hr[?25l[?12l[?25ha[?25l[?12l[?25hn[?25l[?12l[?25hc[?25l[?12l[?25hh[?25l[?12l[?25h [?25l[?12l[?25h'[?25l[?12l[?25hm[?25l[?12l[?25ha[?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25h'[?25l[28d[K[?12l[?25h[2;21H[?25l[?12l[?25ho[?25l[?12l[?25hf[?25l[?12l[?25h [?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[29d[J[30d[?12l[?25h[30;1H[?1049l[23;0;0t[?1l>[?2004l[KMerge made by the 'ort' strategy.
+ README.md | 2 [32m+[m[31m-[m
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ ls
+[?2004lmy_unix_session
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git push
+[?2004lUsername for 'https://github.com': ayanava-tiger
+Password for 'https://ayanava-tiger@github.com': 
+Enumerating objects: 8, done.
+Counting objects:  12% (1/8)Counting objects:  25% (2/8)Counting objects:  37% (3/8)Counting objects:  50% (4/8)Counting objects:  62% (5/8)Counting objects:  75% (6/8)Counting objects:  87% (7/8)Counting objects: 100% (8/8)Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects:  20% (1/5)Compressing objects:  40% (2/5)Compressing objects:  60% (3/5)Compressing objects:  80% (4/5)Compressing objects: 100% (5/5)Compressing objects: 100% (5/5), done.
+Writing objects:  16% (1/6)Writing objects:  33% (2/6)Writing objects:  50% (3/6)Writing objects:  66% (4/6)Writing objects:  83% (5/6)Writing objects: 100% (6/6)Writing objects: 100% (6/6), 7.91 KiB | 1.98 MiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ayanava-tiger/Tamlep-Ayanava
+   4140b84..2fafd6b  main -> main
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ cd
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ git[K[K[Kcd[Kd[K[Kcdgit pushls[Kgit status[2Ppullstatusconfig pull.rebase false[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2Pcd Tamlep-Ayanava/Module_1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kcd Tamlep-Ayanava/Module_1
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava/Module_1[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava/Module_1[00m$ git ta[K[K[K[K[K[Kcd ..
+[?2004l[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git tags
+[?2004lgit: 'tags' is not a git command. See 'git --help'.
+
+The most similar commands are
+	stage
+	tag
+[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ git tag
+[?2004l[?1h=[K[?1l>[?2004h]0;ayanava@TIGER01404: ~/Tamlep-Ayanava[01;32mayanava@TIGER01404[00m:[01;34m~/Tamlep-Ayanava[00m$ cd
+[?2004l[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mGit_Hanson[0m  [01;34mTamlep-Ayanava[0m  my_git_session  my_unix_session
+[?2004h]0;ayanava@TIGER01404: ~[01;32mayanava@TIGER01404[00m:[01;34m~[00m$ rm my[K[K[K[K[Kexit
+[?2004lexit
+
+Script done on 2024-09-10 15:36:25+05:30 [COMMAND_EXIT_CODE="0"]
